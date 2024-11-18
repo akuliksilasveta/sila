@@ -1,32 +1,23 @@
-- hosts: all
-#  become: true
-  tasks:
-    - name: Install local pip3
-      apt:
-        name: python3-pip
-        state: present
-      register: zabbix_python_pip3_package_installed
-      until: zabbix_python_pip3_package_installed is succeeded
-      delegate_to: localhost
-      run_once: true
-      tags: install_pip3
-    - name: Install local netaddr
-      apt:
-        name: python3-netaddr
-        state: present
-      register: zabbix_python_netaddr_package_installed
-      until: zabbix_python_netaddr_package_installed is succeeded
-      delegate_to: localhost
-      run_once: true
-      tags: install_netaddr
-    - name: Install agent
-      include_role:
-        name: community.zabbix.zabbix_agent
-      vars:
-        zabbix_agent2: true
-        zabbix_agent_server: zabbix.silasveta.local
-        zabbix_agent_serveractive: zabbix.silasveta.local
-        zabbix_agent2_allow_key: ["system.run[*]"]
-        zabbix_agent2_hostmetadataitem: system.uname
-      tags:
-        - install_agent
+    - hosts: all
+      roles:
+         - role: community.zabbix.zabbix_agent
+           zabbix_agent_server: zabbix.silasveta.local
+           zabbix_agent_serveractive: 1zabbix.silasveta.local
+           zabbix_api_server_host: zabbix.silasveta.local
+           zabbix_api_login_user: Admin
+           zabbix_api_login_pass: zabbix
+           zabbix_api_create_hostgroup: true
+           zabbix_api_create_hosts: true
+           zabbix_agent_host_state: present
+           zabbix_host_groups:
+             - Linux Servers
+           zabbix_agent_link_templates:
+             - Template OS Linux
+             - Apache APP Template
+           zabbix_agent_macros:
+             - macro_key: apache_type
+               macro_value: reverse_proxy
+               macro_type: text
+           zabbix_agent_tags:
+             - tag: environment
+               value: production
