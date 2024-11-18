@@ -24,8 +24,8 @@
         name: community.zabbix.zabbix_agent
       vars:
         zabbix_agent2: true
-        zabbix_agent_server: 45.112.196.24
-        zabbix_agent_serveractive: 45.112.196.24
+        zabbix_agent_server: zabbix.silasveta.local
+        zabbix_agent_serveractive: zabbix.silasveta.local
         zabbix_agent2_allow_key: ["system.run[*]"]
         zabbix_agent2_hostmetadataitem: system.uname
       tags:
