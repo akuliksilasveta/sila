@@ -1,0 +1,12 @@
+--
+- name: Zabbix test rulebook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: zabbix.silasveta.local
+        port: 10051
+  rules:
+    - name: debug
+      condition: event.payload is defined
+      action:
+        debug:
