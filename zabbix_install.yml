@@ -7,9 +7,11 @@
     - name: Install agent
       include_role:
         name:  community.zabbix.zabbix_agent # installing role to hosts
-      vars:
-        zabbix_agent_server: zbx.silasveta.local
-        zabbix_agent_serveractive: zbx.silasveta.local
+      become: yes
+      zabbix_agent_become_on_localhost: false
+ #     vars:
+ #       zabbix_agent_server: zbx.silasveta.local
+ #       zabbix_agent_serveractive: zbx.silasveta.local
 #        zabbix_agent_userparameters:
 #          - name: mysql
 #            scripts_dir: mysql
