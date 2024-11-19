@@ -1,3 +1,4 @@
+#/bih/bash
 ZABBIX_SERVER="zabbix.silasveta.local"        #Main P4-zabbix server
 
 if [[ $EUID -ne 0 ]]; then
