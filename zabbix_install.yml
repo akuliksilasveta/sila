@@ -11,7 +11,7 @@
         server_url: http://zbx.silasveta.local
         login_user: Admin
         login_password: zabbix
-        host_name: "{{ item }}" - # hostname from ansible inventory
+        host_name: "{{ item }}"  # hostname from ansible inventory
         visible_name: "{{ hostvars[item].zabbix_visible_name | default(item) }}" # a variable from inventory with host visible name defaults to hostname
         description: test # takes description from inventory and adds OS distribution and version from ansible system variables
         host_groups: "Windows servers" # a variable from inventory with zabbix host group
