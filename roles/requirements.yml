@@ -14,5 +14,5 @@
 #  scm: git---
 ---
 collections:
-  source: https://github.com/ansible-collections/community.general
+  name: https://github.com/ansible-collections/community.general
   type: git
