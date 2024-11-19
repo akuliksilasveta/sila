@@ -1,16 +1,14 @@
----
-collections:
-  - name: community.zabbix
-    version: 3.2.0
-  - name: ansible.posix
-    version: 1.3.0
-  - name: community.general
-    version: 3.7.0
-  - name: ansible.netcommon
-    version: 6.1.3
-  - name: community.docker
-    version: 3.13.1
-  - name: ansible.windows
-    version: 2.5.0
-  - name: community.windows
-    version: 2.3.0
+- src: hhttps://github.com/ansible-collections/community.zabbix.git
+  scm: git
+- src: https://github.com/ansible-collections/ansible.posix.git
+  scm: git
+- src: https://github.com/ansible-collections/community.general.git
+  scm: git
+- src: https://github.com/ansible-collections/ansible.netcommon.git
+  scm: git
+- src: https://github.com/ansible-collections/community.docker.git
+  scm: git
+- src: https://github.com/ansible-collections/ansible.windows.git
+  scm: git
+- src: https://github.com/ansible-collections/community.windows.git
+  scm: git
