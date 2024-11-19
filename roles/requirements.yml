@@ -1,14 +1,14 @@
-- src: https://github.com/ansible-collections/community.zabbix.git
+- src: https://github.com/ansible-collections/community.zabbix
   scm: git
-- src: https://github.com/ansible-collections/ansible.posix.git
+- src: https://github.com/ansible-collections/ansible.posix
   scm: git
-- src: https://github.com/ansible-collections/community.general.git
+- src: https://github.com/ansible-collections/community.general
   scm: git
-- src: https://github.com/ansible-collections/ansible.netcommon.git
+- src: https://github.com/ansible-collections/ansible.netcommon
   scm: git
-- src: https://github.com/ansible-collections/community.docker.git
+- src: https://github.com/ansible-collections/community.docker
   scm: git
-- src: https://github.com/ansible-collections/ansible.windows.git
+- src: https://github.com/ansible-collections/ansible.windows
   scm: git
-- src: https://github.com/ansible-collections/community.windows.git
+- src: https://github.com/ansible-collections/community.windows
   scm: git
