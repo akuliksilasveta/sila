@@ -14,9 +14,9 @@
         login_password: zabbix
         host_name: "{{ item }}"  # hostname from ansible inventory
         visible_name: "{{ hostvars[item].zabbix_visible_name | default(item) }}" # a variable from inventory with host visible name defaults to hostname
-        description: test # takes description from inventory and adds OS distribution and version from ansible system variables
-        host_groups: "Windows servers" # a variable from inventory with zabbix host group
-        link_templates: "Windows by Zabbix agent"  # a variable from inventory with zabbix templates
+        description: "Linux server" # takes description from inventory and adds OS distribution and version from ansible system variables
+        host_groups: "Linux servers" # a variable from inventory with zabbix host group
+        link_templates: "Linux by Zabbix agent"  # a variable from inventory with zabbix templates
         status: enable # a variable from inventory which defines that host is Enabled or Disabled
         state: present # tells ansible that host should be present, to delete host from zabbix server use absent
         inventory_mode: disabled # don’t use inventory mode
