@@ -9,7 +9,7 @@
       zabbix_agent_server: zbx.silasveta.local
       ...
 
-- name: Using Zabbix collection to manage Zabbix Server's elements with username/password
+- name: Using Zabbix collection to manage Zabbix Server
   hosts: zbx.silasveta.local
   vars:
     ansible_network_os: community.zabbix.zabbix
@@ -24,7 +24,7 @@
       zabbix.zabbix_host:
         ...
 
-- name: Using Zabbix collection to manage Zabbix Server's elements with authentication key
+- name: Using Zabbix collection to manage Zabbix Server
   hosts: zbx.silasveta.local
   vars:
     ansible_network_os: community.zabbix.zabbix
