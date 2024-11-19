@@ -7,6 +7,7 @@ if [[ $EUID -ne 0 ]]; then
 else
         apt-get remove -y zabbix-agent
         apt-get purge -y zabbix-agent
+        sudo apt -y remove needrestart
 
         apt-get update
         apt-get install zabbix-agent
