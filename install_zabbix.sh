@@ -7,8 +7,10 @@ if [[ $EUID -ne 0 ]]; then
 else
         apt-get remove -y zabbix-agent
         apt-get purge -y zabbix-agent
-        sudo apt -y remove needrestart
+        sudo apt -y remove needrestart      
 
+        wget https://repo.zabbix.com/zabbix/7.0/debian/pool/main/z/zabbix-release/zabbix-release_latest+debian12_all.deb
+        dpkg -i zabbix-release_latest+debian12_all.deb
         apt-get update
         apt-get install zabbix-agent
 
