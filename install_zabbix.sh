@@ -19,7 +19,8 @@ else
         sed -i "s/# StartAgents=3/StartAgents=5/;
             s/# HostMetadata=/HostMetadataItem=release/;
             s/# UserParameter=/UserParameter=release, uname -s/" /etc/zabbix/zabbix_agentd.conf
-
+        systemctl unmask zabbix-agent.service
+        systemctl unmask zabbix-agent
         systemctl enable zabbix-agent.service
         systemctl restart zabbix-agent.service
 fi
