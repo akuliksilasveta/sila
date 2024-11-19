@@ -5,7 +5,6 @@
         name:  community.zabbix.zabbix_agent # installing role to hosts
       tags:
         - install # using tags for convenience     
-      state: absent
     - name: Create a new host or update an existing host's info # task that registers agent in zabbix server
       local_action:
         module: community.zabbix.zabbix_host # using ansible module
