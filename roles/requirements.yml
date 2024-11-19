@@ -1,4 +1,4 @@
-- src: hhttps://github.com/ansible-collections/community.zabbix.git
+- src: https://github.com/ansible-collections/community.zabbix.git
   scm: git
 - src: https://github.com/ansible-collections/ansible.posix.git
   scm: git
