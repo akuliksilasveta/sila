@@ -5,6 +5,7 @@
         name:  community.zabbix.zabbix_agent # installing role to hosts
       vars:
         zabbix_agent_server: zbx.silasveta.local
+        zabbix_agent_serveractive: zbx.silasveta.local
 #        zabbix_agent_userparameters:
 #          - name: mysql
 #            scripts_dir: mysql
