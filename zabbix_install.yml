@@ -3,8 +3,6 @@
     - name: Install agent
       include_role:
         name:  community.zabbix.zabbix_agent # installing role to hosts
-      zabbix_agent_server: zbx.silasveta.local
-      zabbix_agent_serveractive: zbx.silasveta.local
       tags:
         - install # using tags for convenience     
       state: absent
