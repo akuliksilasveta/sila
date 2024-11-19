@@ -1,10 +1,14 @@
-#/bih/bash
-ZABBIX_SERVER="zabbix.silasveta.local"        #Main P4-zabbix server
+#!/bin/bash -e
+ZABBIX_SERVER="zabbix.silasveta.local"
+HOSTNAME="hostname"
 
-if [[ $EUID -ne 0 ]]; then
-        echo "must run as root" 1>&2
-        exit 1
-else
+if [ "$UID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
+
+# Only run it if we can (ie. on Ubuntu/Debian)
+if [ -x /usr/bin/apt-get ]; then
         apt-get remove -y zabbix-agent
         apt-get purge -y zabbix-agent
         sudo apt -y remove needrestart      
@@ -23,6 +27,17 @@ else
             s/# UserParameter=/UserParameter=release, uname -s/" /etc/zabbix/zabbix_agentd.conf
         systemctl unmask zabbix-agent.service
         systemctl unmask zabbix-agent
-        systemctl enable zabbix-agent.service
-        systemctl restart zabbix-agent.service
+        service zabbix-agent restart  
+fi
+
+# Only run it if we can (ie. on RHEL/CentOS)
+if [ -x /usr/bin/yum ]; then
+          yum -y update
+          rpm -ivh https://repo.zabbix.com/zabbix/7.0/rhel/9/x86_64/zabbix-release-latest.el9.noarch.rpm
+          yum -y install zabbix-agent
+          chkconfig zabbix-agent on
+          sed -i "/^Server=/c\Server=${ZABBIX_SERVER}" /etc/zabbix/zabbix_agentd.conf
+          sed -i "/^ServerActive=/c\ServerActive=${ZABBIX_SERVER}" /etc/zabbix/zabbix_agentd.conf
+          sed -i "s/Hostname=Zabbix\ server/Hostname=$HOSTNAME/" /etc/zabbix/zabbix_agentd.conf
+          service zabbix-agent restart
 fi
