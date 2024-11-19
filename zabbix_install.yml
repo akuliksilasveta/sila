@@ -1,14 +1,13 @@
 ---
-- name: Using Zabbix collection to install Zabbix Agent
-  hosts: all
+- name: Using Zabbix collection
+  hosts: localhost
+  collections:
+    - community.zabbix
+
   roles:
-    - role: community.zabbix.zabbix_agent
+    - role: zabbix_agent
       zabbix_agent_server: zbx.silasveta.local
       ...
-
-- name: If Zabbix WebUI runs on non-default (zabbix) path, e.g. http://<FQDN>/zabbixeu
-  ansible.builtin.set_fact:
-    ansible_zabbix_url_path: 'zabbix'
 
 - name: Using Zabbix collection to manage Zabbix Server's elements with username/password
   hosts: zbx.silasveta.local
@@ -22,7 +21,7 @@
     ansible_httpapi_pass: zabbix
   tasks:
     - name: Ensure host is monitored by Zabbix
-      community.zabbix.zabbix_host:
+      zabbix.zabbix_host:
         ...
 
 - name: Using Zabbix collection to manage Zabbix Server's elements with authentication key
@@ -32,7 +31,7 @@
     ansible_connection: httpapi
     ansible_httpapi_port: 80
     ansible_httpapi_use_ssl: false  # Set to true for HTTPS
-    ansible_httpapi_validate_certs: false  # For HTTPS set to true to validate server's certificate
+    ansible_httpapi_validate_certs: false  # For HTTPS et to true to validate server's certificate
     ansible_zabbix_auth_key: 8ec0d52432c15c91fcafe9888500cf9a607f44091ab554dbee860f6b44fac895
   tasks:
     - name: Ensure host is monitored by Zabbix
