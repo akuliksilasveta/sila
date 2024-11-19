@@ -3,6 +3,12 @@
     - name: Install agent
       include_role:
         name:  community.zabbix.zabbix_agent # installing role to hosts
+      vars:
+        zabbix_agent_server: zbx.silasveta.local
+#        zabbix_agent_userparameters:
+#          - name: mysql
+#            scripts_dir: mysql
+#          - name: galera      
       tags:
         - install # using tags for convenience     
     - name: Create a new host or update an existing host's info # task that registers agent in zabbix server
