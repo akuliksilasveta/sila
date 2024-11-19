@@ -1,11 +1,6 @@
 
 - hosts: all 
   tasks:
-    - name: Install python package
-      ansible.builtin.pip:
-        name: netaddr
-      delegate_to: 127.0.0.1
-      run_once: true
     - name: Install agent
       include_role:
         name:  community.zabbix.zabbix_agent # installing role to hosts
