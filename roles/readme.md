@@ -14,3 +14,20 @@ collections:
     version: 2.5.0
   - name: community.windows
     version: 2.3.0
+
+---
+collections:
+  - name: https://github.com/ansible-collections/community.general.git
+    type: git
+  - name: https://github.com/ansible-collections/community.zabbix.git
+    type: git
+  - name: https://github.com/ansible-collections/ansible.posix.git
+    type: git
+  - name: https://github.com/ansible-collections/ansible.netcommon.git
+    type: git
+  - name: https://github.com/ansible-collections/community.docker.git
+    type: git
+  - name: https://github.com/ansible-collections/ansible.windows.git
+    type: git
+  - name: https://github.com/ansible-collections/community.windows.git
+    type: git
