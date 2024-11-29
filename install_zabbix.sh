@@ -24,10 +24,6 @@ if [ -x /usr/bin/apt-get ]; then
         sed -i "/^# HostnameItem=system.hostname/c\HostnameItem=system.hostname[host]" /etc/zabbix/zabbix_agentd.conf
         sed -i "/^# HostInterfaceItem=/c\HostInterfaceItem=system.hostname[fqdn,lower]" /etc/zabbix/zabbix_agentd.conf
 
-
-        sed -i "s/# StartAgents=3/StartAgents=5/;
-            s/# HostMetadata=/HostMetadataItem=release/;
-            s/# UserParameter=/UserParameter=release, uname -s/" /etc/zabbix/zabbix_agentd.conf
         systemctl unmask zabbix-agent.service
         systemctl unmask zabbix-agent
         service zabbix-agent restart  
