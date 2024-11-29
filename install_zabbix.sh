@@ -20,7 +20,8 @@ if [ -x /usr/bin/apt-get ]; then
 
         sed -i "/^Server=/c\Server=10.1.2.0/24" /etc/zabbix/zabbix_agentd.conf
         sed -i "/^ServerActive=/c\ServerActive=${ZABBIX_SERVER2}" /etc/zabbix/zabbix_agentd.conf
-        sed -i "/^#HostnameItem=system.hostname/c\HostnameItem=system.hostname[host]" /etc/zabbix/zabbix_agentd.conf
+        sed -i "/^Hostname=/c\#Hostname=" /etc/zabbix/zabbix_agentd.conf
+        sed -i "/^# HostnameItem=system.hostname/c\HostnameItem=system.hostname[host]" /etc/zabbix/zabbix_agentd.conf
         sed -i "/^# HostInterfaceItem=/c\HostInterfaceItem=system.hostname[fqdn,lower]" /etc/zabbix/zabbix_agentd.conf
 
 
