@@ -18,9 +18,11 @@ if [ -x /usr/bin/apt-get ]; then
         apt-get update
         apt-get install zabbix-agent
 
-        sed -i "/^Server=/c\Server=${ZABBIX_SERVER}" /etc/zabbix/zabbix_agentd.conf
+        sed -i "/^Server=/c\Server=10.1.2.0/24" /etc/zabbix/zabbix_agentd.conf
         sed -i "/^ServerActive=/c\ServerActive=${ZABBIX_SERVER2}" /etc/zabbix/zabbix_agentd.conf
-        sed -i "/^#HostnameItem=system.hostname/c\HostnameItem=system.hostname" /etc/zabbix/zabbix_agentd.conf
+        sed -i "/^#HostnameItem=system.hostname/c\HostnameItem=system.hostname[host]" /etc/zabbix/zabbix_agentd.conf
+        sed -i "/^# HostInterfaceItem=/c\HostInterfaceItem=system.hostname[fqdn,lower]" /etc/zabbix/zabbix_agentd.conf
+
 
         sed -i "s/# StartAgents=3/StartAgents=5/;
             s/# HostMetadata=/HostMetadataItem=release/;
@@ -36,8 +38,8 @@ if [ -x /usr/bin/yum ]; then
           rpm -ivh https://repo.zabbix.com/zabbix/7.0/rhel/9/x86_64/zabbix-release-latest.el9.noarch.rpm
           yum -y install zabbix-agent
           chkconfig zabbix-agent on
-          sed -i "/^Server=/c\Server=${ZABBIX_SERVER}" /etc/zabbix/zabbix_agentd.conf
           sed -i "/^ServerActive=/c\ServerActive=${ZABBIX_SERVER2}" /etc/zabbix/zabbix_agentd.conf
-          sed -i "/^#HostnameItem=system.hostname/c\HostnameItem=system.hostname" /etc/zabbix/zabbix_agentd.conf
+          sed -i "/^#HostnameItem=system.hostname/c\HostnameItem=system.hostname[host]" /etc/zabbix/zabbix_agentd.conf
+          sed -i "/^# HostInterfaceItem=/c\HostInterfaceItem=system.hostname[fqdn,lower]" /etc/zabbix/zabbix_agentd.conf
           service zabbix-agent restart
 fi
